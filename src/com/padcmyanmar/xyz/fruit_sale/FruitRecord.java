@@ -20,4 +20,14 @@ public class FruitRecord {
         durian = new FruitType("တစ်လုံး", 8500,
                 "Durian (ဒူးရင်းသီး)");
     }
+
+    public static void showFruitRecord() {
+        System.out.println("\'P\' for " + papaya.getName());
+        System.out.println("\'W\' for " + waterMelon.getName());
+        System.out.println("\'G\' for " + grape.getName());
+        System.out.println("\'A\' for " + pineApple.getName());
+        System.out.println("\'D\' for " + durian.getName());
+        System.out.println("*** \'F\' for Finish Sale");
+        System.out.println();
+    }
 }
