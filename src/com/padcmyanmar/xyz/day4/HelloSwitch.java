@@ -1,8 +1,12 @@
+package com.padcmyanmar.xyz.day4;
+
+import java.util.Scanner;
+
 public class HelloSwitch {
 
     public static void main(String[] args) {
         //simple "switch"
-        int week = 4;
+        int week = 3;
         String day;
 
         switch (week) {
@@ -14,10 +18,8 @@ public class HelloSwitch {
                 break;
             case 3:
                 day = "Tuesday";
-                break;
             case 4:
                 day = "Wednesday";
-                break;
             case 5:
                 day = "Thursday";
                 break;

@@ -1,7 +1,12 @@
+package com.padcmyanmar.xyz.day5;
+
+import java.util.Scanner;
+
 public class HelloContinue {
 
     public static void main(String[] args) {
 
+        /*
         //continue
         for (int i = 1; i <= 10; ++i) {
             if (i > 4 && i < 9) {
@@ -9,6 +14,7 @@ public class HelloContinue {
             }
             System.out.println(i);
         }
+        */
 
         /*
         //another continue
@@ -28,7 +34,6 @@ public class HelloContinue {
         System.out.println("Sum = " + sum);
         */
 
-        /*
         //labeled continue
         label:
         for (int i = 1; i < 6; ++i) {
@@ -38,6 +43,5 @@ public class HelloContinue {
                 System.out.println("i = " + i + "; j = " + j);
             }
         }
-        */
     }
 }

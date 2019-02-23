@@ -1,7 +1,12 @@
+package com.padcmyanmar.xyz.day5;
+
+import java.util.Scanner;
+
 public class HelloBreak {
 
     public static void main(String[] args) {
 
+        /*
         //break from "for" loop
         for (int i = 1; i <= 10; ++i) {
             if (i == 5) {
@@ -9,11 +14,13 @@ public class HelloBreak {
             }
             System.out.println(i);
         }
+        */
 
-        /*
         //break from "while" loop
         Double number, sum = 0.0;
         Scanner input = new Scanner(System.in);
+
+        Double.parseDouble("4.5");
 
         while (true) {
             System.out.print("Enter a number: ");
@@ -26,7 +33,6 @@ public class HelloBreak {
             sum += number;
         }
         System.out.println("Sum = " + sum);
-        */
 
         /*
         //labeled "break"
@@ -40,7 +46,9 @@ public class HelloBreak {
                 if (i == 2)
                     break first;
             }
+            //a
         }
+        //b
         */
     }
 }

@@ -1,3 +1,5 @@
+package com.padcmyanmar.xyz;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,6 +19,7 @@ public class HelloJava {
 
         BufferedReader myReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Enter your township : ");
+
         try {
             String myTownship = myReader.readLine();
             System.out.println("Your township is " + myTownship);
