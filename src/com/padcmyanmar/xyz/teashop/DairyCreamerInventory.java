@@ -13,4 +13,8 @@ public class DairyCreamerInventory extends Inventory {
                 DAIRY_CREAMER_ISU,
                 DAIRY_CREAMER_PSC);
     }
+
+    public void updateInventoryForNewSale(Tea tea, int sellingQuantity){
+        inStockQuantity -= tea.getDairyCreamerAmount() * sellingQuantity;
+    }
 }

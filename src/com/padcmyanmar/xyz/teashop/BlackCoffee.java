@@ -6,6 +6,8 @@ public class BlackCoffee extends Coffee {
     private static final int BLACK_COFFEE_SUGAR_AMOUNT = 2;
     private static final int BLACK_COFFEE_LIME_SLICE = 1;
 
+    private static final char BLACK_COFFEE_CHAR = 'B';
+
     private int coffeePowderAmount;
     private int sugerAmount;
     private int limeSlice;
@@ -15,5 +17,9 @@ public class BlackCoffee extends Coffee {
         coffeePowderAmount = BLACK_COFFEE_COFFEE_POWDER_AMOUNT;
         sugerAmount = BLACK_COFFEE_SUGAR_AMOUNT;
         limeSlice = BLACK_COFFEE_LIME_SLICE;
+    }
+
+    public static void showBeverageWithChar() {
+        System.out.println("\'" + BLACK_COFFEE_CHAR + "\' Black Coffee");
     }
 }

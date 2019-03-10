@@ -6,6 +6,8 @@ public class CoffeeHnutPhyaw extends Coffee {
     private static final int COFFEE_HNUT_PHYAW_COFFEE_POWDER_AMOUNT = 3;
     private static final int COFFEE_HNUT_PHYAW_SUGAR_AMOUNT = 3;
 
+    private static final char HNUT_PHYAW_CHAR = 'H';
+
     private int dairyCreamerAmount;
     private int coffeePowderAmount;
     private int sugerAmount;
@@ -15,5 +17,9 @@ public class CoffeeHnutPhyaw extends Coffee {
         dairyCreamerAmount = COFFEE_HNUT_PHYAW_DAIRY_CREAMER_AMOUNT;
         coffeePowderAmount = COFFEE_HNUT_PHYAW_COFFEE_POWDER_AMOUNT;
         sugerAmount = COFFEE_HNUT_PHYAW_SUGAR_AMOUNT;
+    }
+
+    public static void showBeverageWithChar() {
+        System.out.println("\'" + HNUT_PHYAW_CHAR + "\' for Hnut Phyaw Coffee");
     }
 }

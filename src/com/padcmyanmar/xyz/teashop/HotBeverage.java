@@ -7,4 +7,8 @@ public class HotBeverage {
     public HotBeverage(SellingType sellingType) {
         this.sellingType = sellingType;
     }
+
+    public SellingType getSellingType() {
+        return sellingType;
+    }
 }

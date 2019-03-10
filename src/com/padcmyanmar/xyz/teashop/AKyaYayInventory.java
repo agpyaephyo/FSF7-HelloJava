@@ -12,4 +12,8 @@ public class AKyaYayInventory extends Inventory {
                 AKAYYAY_PCU, AKAYYAY_ISU,
                 AKAYYAY_PSC);
     }
+
+    public void updateInventoryForNewSale(Tea tea, int sellingQuantity){
+        inStockQuantity -= tea.getaKyaYayAmount() * sellingQuantity;
+    }
 }
