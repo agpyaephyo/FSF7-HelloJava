@@ -13,7 +13,7 @@ public class UsingCPU {
         */
 
         /*
-        CPU2 ibmCPU = new CPU2(8);
+        CPU2 ibmCPU = new CPU2(4);
         CPU2.ArithmeticLogicUnit ibmAlu = ibmCPU.new ArithmeticLogicUnit();
         CPU2.L3Cache ibmL3Cache = ibmCPU.new L3Cache();
 
