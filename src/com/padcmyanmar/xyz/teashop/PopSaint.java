@@ -6,8 +6,11 @@ public class PopSaint extends Tea {
     private static final int POP_SAINT_AKYAYAY_AMOUNT = 50;
     private static final int POP_SAINT_SUGAR_AMOUNT = 2;
 
-    public static final int POP_SAINT_CHAR = 'A';
+    public static final char POP_SAINT_CHAR = 'A';
     public static final String POP_SAINT_NAME = "Pop Saint Tea";
+
+    private static int totalPopSaintCups;
+    private static double subTotalForPopSaintSales;
 
     public PopSaint(SellingType sellingType) {
         super(sellingType,
@@ -19,5 +22,22 @@ public class PopSaint extends Tea {
 
     public static void showBeverageWithChar() {
         System.out.println("\'" + POP_SAINT_CHAR + "\' for " + POP_SAINT_NAME);
+    }
+
+    public static void addTotalPopSaintCups() {
+        totalPopSaintCups++;
+    }
+
+    public static void addSubTotal(double price) {
+        subTotalForPopSaintSales += price;
+    }
+
+    public static void showSubTotal() {
+        System.out.println(POP_SAINT_NAME + " - " + totalPopSaintCups
+                + " cups : " + subTotalForPopSaintSales + " mmk");
+    }
+
+    public static double getSubTotalForPopSaintSales() {
+        return subTotalForPopSaintSales;
     }
 }

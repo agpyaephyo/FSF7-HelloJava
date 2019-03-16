@@ -9,6 +9,9 @@ public class ChoSaint extends Tea {
 
     public static final char CHO_SAINT_CHAR = 'S';
 
+    private static int totalChoSaintCups;
+    private static double subTotalForChoSaintSales;
+
     public ChoSaint(SellingType sellingType) {
         super(sellingType,
                 CHO_SAINT_DIARY_CREAMER_AMOUNT,
@@ -20,5 +23,28 @@ public class ChoSaint extends Tea {
     public static void showBeverageWithChar() {
         System.out.println("\'" + CHO_SAINT_CHAR
                 + "\' for " + CHO_SAINT_NAME);
+    }
+
+    public static void setTotalChoSaintCups(int totalChoSaintCups) {
+        if (totalChoSaintCups > 0) {
+            ChoSaint.totalChoSaintCups = totalChoSaintCups;
+        }
+    }
+
+    public static void addTotalChoSaintCups(int quantity) {
+        totalChoSaintCups += quantity;
+    }
+
+    public static void addSubTotal(double price) {
+        subTotalForChoSaintSales += price;
+    }
+
+    public static void showSubTotal() {
+        System.out.println(CHO_SAINT_NAME + " - " + totalChoSaintCups
+                + " cups : " + subTotalForChoSaintSales + " mmk");
+    }
+
+    public static double getSubTotalForChoSaintSales() {
+        return subTotalForChoSaintSales;
     }
 }
