@@ -28,11 +28,23 @@ public class Inventory {
         return inStockQuantity / purchasingSellingConversion;
     }
 
+    public double getUsedStockQuantity() {
+        return (purchasingQuantity * purchasingSellingConversion) - inStockQuantity;
+    }
+
     public void showRemainingStock() {
         System.out.println(inventoryType + " : " + getRemainingInstockQuantity());
     }
 
-    public void showUsedStock(double totalUsedInventory) {
-        System.out.println(inventoryType + " : " + totalUsedInventory / purchasingSellingConversion);
+    public void showUsedStock() {
+        System.out.println(inventoryType + " : " + getUsedStockQuantity() / purchasingSellingConversion);
+    }
+
+    public int getPurchasingQuantity() {
+        return purchasingQuantity;
+    }
+
+    public int getPurchasingSellingConversion() {
+        return purchasingSellingConversion;
     }
 }

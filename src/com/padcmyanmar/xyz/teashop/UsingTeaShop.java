@@ -10,37 +10,7 @@ public class UsingTeaShop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Please input purchasing quantity for Dairy Creamer : ");
-        int dairyCreamerPQ = scanner.nextInt();
-        DairyCreamerInventory dairyCreamerInventory =
-                new DairyCreamerInventory(dairyCreamerPQ);
-
-        System.out.print("Please input purchasing quantity for AKyaYay : ");
-        int aKyaYayPQ = scanner.nextInt();
-        AKyaYayInventory aKyaYayInventory =
-                new AKyaYayInventory(aKyaYayPQ);
-
-        System.out.print("Please input purchasing quantity for Sugar : ");
-        int sugarPQ = scanner.nextInt();
-        SugarInventory sugarInventory =
-                new SugarInventory(sugarPQ);
-
-        /*
-        System.out.print("Please input purchasing quantity for Coffee Powder : ");
-        int coffeePowderPQ = scanner.nextInt();
-        CoffeePowderInventory coffeePowderInventory =
-                new CoffeePowderInventory(sugarPQ);
-
-        System.out.print("Please input purchasing quantity for Lime : ");
-        int limePQ = scanner.nextInt();
-        LimeInventory limeInventory =
-                new LimeInventory(limePQ);
-
-        System.out.print("Please input purchasing quantity for Coffee Mix : ");
-        int coffeeMixPQ = scanner.nextInt();
-        CoffeeMixInventory coffeeMixInventory =
-                new CoffeeMixInventory(coffeeMixPQ);
-                */
+        TeaShopInventory.getObjInstance();
 
         char newSaleOrSummary;
         Map<Timestamp, Sale> salesMap = new HashMap<>();
@@ -59,11 +29,10 @@ public class UsingTeaShop {
             do {
                 System.out.println();
                 System.out.println("=== Please select one from the following menu ===");
-                /*
                 BlackCoffee.showBeverageWithChar();
                 CoffeeHnutPhyaw.showBeverageWithChar();
                 CoffeeMix.showBeverageWithChar();
-                */
+
                 ChoKya.showBeverageWithChar();
                 ChoSaint.showBeverageWithChar();
                 KyaSaint.showBeverageWithChar();
@@ -97,25 +66,34 @@ public class UsingTeaShop {
                                 + userChoiceST + "\' is not supported");
                 }
 
-                Tea userSelectedTea;
+                HotBeverage userSelectedHB;
                 switch (userChoiceBeverage) {
                     case ChoKya.CHO_KYA_CHAR:
-                        userSelectedTea = new ChoKya(sellingType);
+                        userSelectedHB = new ChoKya(sellingType);
                         break;
                     case KyaSaint.KYA_SAINT_CHAR:
-                        userSelectedTea = new KyaSaint(sellingType);
+                        userSelectedHB = new KyaSaint(sellingType);
                         break;
                     case PopKya.POP_KYA_CHAR:
-                        userSelectedTea = new PopKya(sellingType);
+                        userSelectedHB = new PopKya(sellingType);
                         break;
                     case PopSaint.POP_SAINT_CHAR:
-                        userSelectedTea = new PopSaint(sellingType);
+                        userSelectedHB = new PopSaint(sellingType);
                         break;
                     case ChoSaint.CHO_SAINT_CHAR:
-                        userSelectedTea = new ChoSaint(sellingType);
+                        userSelectedHB = new ChoSaint(sellingType);
                         break;
                     case KyoutPaToung.KYOUT_PA_TOUNG_CHAR:
-                        userSelectedTea = new KyoutPaToung(sellingType);
+                        userSelectedHB = new KyoutPaToung(sellingType);
+                        break;
+                    case CoffeeHnutPhyaw.HNUT_PHYAW_CHAR:
+                        userSelectedHB = new CoffeeHnutPhyaw(sellingType);
+                        break;
+                    case CoffeeMix.COFFEE_MIX_CHAR:
+                        userSelectedHB = new CoffeeMix(sellingType);
+                        break;
+                    case BlackCoffee.BLACK_COFFEE_CHAR:
+                        userSelectedHB = new BlackCoffee(sellingType);
                         break;
                     default:
                         throw new UnsupportedOperationException("Character input for tea \'"
@@ -125,15 +103,11 @@ public class UsingTeaShop {
                 System.out.print("Please input the quantity : ");
                 int quantity = scanner.nextInt();
 
-                if (userSelectedTea.isSufficientInStockForNewSale(dairyCreamerInventory, sugarInventory,
-                        aKyaYayInventory, quantity)) {
+                if (userSelectedHB.isSufficientInStockForNewSale(quantity)) {
                     //enough inventory.
+                    TeaShopInventory.getObjInstance().updateInventoryForNewSale(userSelectedHB, quantity);
 
-                    dairyCreamerInventory.updateInventoryForNewSale(userSelectedTea, quantity);
-                    sugarInventory.updateInventoryForNewSale(userSelectedTea, quantity);
-                    aKyaYayInventory.updateInventoryForNewSale(userSelectedTea, quantity);
-
-                    SaleItem saleItem = new SaleItem(userSelectedTea, quantity);
+                    SaleItem saleItem = new SaleItem(userSelectedHB, quantity);
                     sale.addNewSaleItem(saleItem);
 
                     System.out.print("Would like to buy another tea ? (y/n) : ");
@@ -142,17 +116,17 @@ public class UsingTeaShop {
                 } else {
                     //not enough inventory.
                     System.out.println("Not enough inventory to sell " + quantity
-                            + " cup(s) of " + userSelectedTea.getName());
+                            + " cup(s) of " + userSelectedHB.getName());
                     userContinue = 'n';
                 }
             } while (userContinue == 'y');
 
             double total = 0.0;
             for (SaleItem saleItem : sale.getSaleItems()) {
-                double subTotal = saleItem.getSaleQuantity() * saleItem.getSaleTea().getSellingType().getPrice();
+                double subTotal = saleItem.getSaleQuantity() * saleItem.getSaleHotBeverage().getSellingType().getPrice();
                 total += subTotal;
-                System.out.println(saleItem.getSaleTea().getSellingType().getName()
-                        + saleItem.getSaleTea().getName()
+                System.out.println(saleItem.getSaleHotBeverage().getSellingType().getName()
+                        + saleItem.getSaleHotBeverage().getName()
                         + "(" + saleItem.getSaleQuantity() + " cup(s)) : "
                         + subTotal + " mmk");
             }
@@ -165,23 +139,23 @@ public class UsingTeaShop {
         for (Timestamp timestamp : salesMap.keySet()) {
             Sale sale = salesMap.get(timestamp);
             for (SaleItem saleItem : sale.getSaleItems()) {
-                double price = saleItem.getSaleTea().getSellingType().getPrice();
-                if (saleItem.getSaleTea() instanceof ChoSaint) {
+                double price = saleItem.getSaleHotBeverage().getSellingType().getPrice();
+                if (saleItem.getSaleHotBeverage() instanceof ChoSaint) {
                     ChoSaint.addTotalChoSaintCups(saleItem.getSaleQuantity());
                     ChoSaint.addSubTotal(price);
-                } else if (saleItem.getSaleTea() instanceof KyaSaint) {
+                } else if (saleItem.getSaleHotBeverage() instanceof KyaSaint) {
                     KyaSaint.addTotalKyaSaintCups(saleItem.getSaleQuantity());
                     KyaSaint.addSubTotal(price);
-                } else if (saleItem.getSaleTea() instanceof PopSaint) {
+                } else if (saleItem.getSaleHotBeverage() instanceof PopSaint) {
                     PopSaint.addTotalPopSaintCups(saleItem.getSaleQuantity());
                     PopSaint.addSubTotal(price);
-                } else if (saleItem.getSaleTea() instanceof PopKya) {
+                } else if (saleItem.getSaleHotBeverage() instanceof PopKya) {
                     PopKya.addTotalPopKyaCups(saleItem.getSaleQuantity());
                     PopKya.addSubTotal(price);
-                } else if (saleItem.getSaleTea() instanceof ChoKya) {
+                } else if (saleItem.getSaleHotBeverage() instanceof ChoKya) {
                     ChoKya.addTotalChoKyaCup(saleItem.getSaleQuantity());
                     ChoKya.addSubTotal(price);
-                } else if (saleItem.getSaleTea() instanceof KyoutPaToung) {
+                } else if (saleItem.getSaleHotBeverage() instanceof KyoutPaToung) {
                     KyoutPaToung.addTotalKyoutPaToungCups(saleItem.getSaleQuantity());
                     KyoutPaToung.addSubTotal(price);
                 }
@@ -204,37 +178,7 @@ public class UsingTeaShop {
                 + KyoutPaToung.getSubTotalForKyoutPaToungSale();
         System.out.println(">>>> Total Sale for Today : " + totalSale + " mmk");
 
-        double totalDairyCreamerUse = ChoSaint.getTotalDairyCreamerAmount()
-                + PopSaint.getTotalDairyCreamerAmount()
-                + PopKya.getTotalDairyCreamerAmount()
-                + KyaSaint.getTotalDairyCreamerAmount()
-                + ChoKya.getTotalDairyCreamerAmount()
-                + KyoutPaToung.getTotalDairyCreamerAmount();
-
-        double totalAKyaYayUse = ChoSaint.getTotalAKyaYayAmount()
-                + PopSaint.getTotalAKyaYayAmount()
-                + PopKya.getTotalAKyaYayAmount()
-                + KyaSaint.getTotalAKyaYayAmount()
-                + ChoKya.getTotalAKyaYayAmount()
-                + KyoutPaToung.getTotalAKyaYayAmount();
-
-        double totalSugarUse = ChoSaint.getTotalSugarAmount()
-                + PopSaint.getTotalSugarAmount()
-                + PopKya.getTotalSugarAmount()
-                + KyaSaint.getTotalSugarAmount()
-                + ChoKya.getTotalSugarAmount()
-                + KyoutPaToung.getTotalSugarAmount();
-
-        System.out.println();
-        System.out.println("=== Today Use of Inventory Summary ===");
-        dairyCreamerInventory.showUsedStock(totalDairyCreamerUse);
-        aKyaYayInventory.showUsedStock(totalAKyaYayUse);
-        sugarInventory.showUsedStock(totalSugarUse);
-
-        System.out.println();
-        System.out.println("=== Remaining Inventory for Today ===");
-        dairyCreamerInventory.showRemainingStock();
-        aKyaYayInventory.showRemainingStock();
-        sugarInventory.showRemainingStock();
+        TeaShopInventory.getObjInstance().showTodayUseOfInventorySummary();
+        TeaShopInventory.getObjInstance().showRemainingInventoryForToday();
     }
 }

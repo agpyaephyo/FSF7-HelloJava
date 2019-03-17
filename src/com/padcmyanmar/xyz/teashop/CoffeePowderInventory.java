@@ -14,4 +14,12 @@ public class CoffeePowderInventory extends Inventory {
                 COFFEE_POWDER_PSC,
                 COFFEE_POWDER_INVENTORY_TYPE);
     }
+
+    public void updateInventoryForNewSale(CoffeeHnutPhyaw coffeeHnutPhyaw, int sellingQuantity) {
+        inStockQuantity -= coffeeHnutPhyaw.getCoffeePowderAmount() * sellingQuantity;
+    }
+
+    public void updateInventoryForNewSale(BlackCoffee blackCoffee, int sellingQuantity) {
+        inStockQuantity -= blackCoffee.getCoffeePowderAmount() * sellingQuantity;
+    }
 }

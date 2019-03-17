@@ -14,4 +14,8 @@ public class CoffeeMixInventory extends Inventory {
                 COFFEE_MIX_PSC,
                 COFFEE_MIX_INVENTORY_TYPE);
     }
+
+    public void updateInventoryForNewSale(CoffeeMix coffeeMix, int sellingQuantity) {
+        inStockQuantity -= coffeeMix.getCoffeeMixAmount() * sellingQuantity;
+    }
 }

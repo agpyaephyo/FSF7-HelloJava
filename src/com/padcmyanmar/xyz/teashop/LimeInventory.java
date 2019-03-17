@@ -14,4 +14,8 @@ public class LimeInventory extends Inventory {
                 LIME_PSC,
                 LIME_INVENTORY_TYPE);
     }
+
+    public void updateInventoryForNewSale(BlackCoffee blackCoffee, int sellingQuantity) {
+        inStockQuantity -= blackCoffee.getLimeSlice() * sellingQuantity;
+    }
 }

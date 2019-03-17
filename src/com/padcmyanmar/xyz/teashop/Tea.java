@@ -5,15 +5,13 @@ public class Tea extends HotBeverage {
     private double dairyCreamerAmount;
     private int aKyaYayAmount;
     private double sugarAmount;
-    private String name;
 
     public Tea(SellingType sellingType, double dairyCreamerAmount,
                int aKyaYayAmount, double sugarAmount, String name) {
-        super(sellingType);
+        super(name, sellingType);
         this.dairyCreamerAmount = dairyCreamerAmount;
         this.aKyaYayAmount = aKyaYayAmount;
         this.sugarAmount = sugarAmount;
-        this.name = name;
     }
 
     public double getDairyCreamerAmount() {
@@ -28,17 +26,10 @@ public class Tea extends HotBeverage {
         return sugarAmount;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean isSufficientInStockForNewSale(DairyCreamerInventory dairyCreamerInventory,
-                                                 SugarInventory sugarInventory,
-                                                 AKyaYayInventory aKyaYayInventory,
-                                                 int quantity) {
-
-        return (dairyCreamerInventory.getInStockQuantity() > getDairyCreamerAmount() * quantity
-                && sugarInventory.getInStockQuantity() > getSugarAmount() * quantity
-                && aKyaYayInventory.getInStockQuantity() > getaKyaYayAmount() * quantity);
+    @Override
+    public boolean isSufficientInStockForNewSale(int quantity) {
+        return (TeaShopInventory.getObjInstance().getDairyCreamerInventory().getInStockQuantity() > getDairyCreamerAmount() * quantity
+                && TeaShopInventory.getObjInstance().getSugarInventory().getInStockQuantity() > getSugarAmount() * quantity
+                && TeaShopInventory.getObjInstance().getaKyaYayInventory().getInStockQuantity() > getaKyaYayAmount() * quantity);
     }
 }

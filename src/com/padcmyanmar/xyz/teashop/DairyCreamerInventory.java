@@ -19,4 +19,12 @@ public class DairyCreamerInventory extends Inventory {
     public void updateInventoryForNewSale(Tea tea, int sellingQuantity) {
         inStockQuantity -= tea.getDairyCreamerAmount() * sellingQuantity;
     }
+
+    public void updateInventoryForNewSale(CoffeeHnutPhyaw coffeeHnutPhyaw, int sellingQuantity) {
+        inStockQuantity -= coffeeHnutPhyaw.getDairyCreamerAmount() * sellingQuantity;
+    }
+
+    public void updateInventoryForNewSale(CoffeeMix coffeeMix, int sellingQuantity) {
+        inStockQuantity -= coffeeMix.getDairyCreamerAmount() * sellingQuantity;
+    }
 }

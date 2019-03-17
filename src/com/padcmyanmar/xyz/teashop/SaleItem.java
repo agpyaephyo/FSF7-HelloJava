@@ -2,16 +2,16 @@ package com.padcmyanmar.xyz.teashop;
 
 public class SaleItem {
 
-    private Tea saleTea;
+    private HotBeverage saleHotBeverage;
     private int saleQuantity;
 
-    public SaleItem(Tea saleTea, int saleQuantity) {
-        this.saleTea = saleTea;
+    public SaleItem(HotBeverage saleHotBeverage, int saleQuantity) {
+        this.saleHotBeverage = saleHotBeverage;
         this.saleQuantity = saleQuantity;
     }
 
-    public Tea getSaleTea() {
-        return saleTea;
+    public HotBeverage getSaleHotBeverage() {
+        return saleHotBeverage;
     }
 
     public int getSaleQuantity() {

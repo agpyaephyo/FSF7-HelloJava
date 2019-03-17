@@ -6,20 +6,39 @@ public class CoffeeHnutPhyaw extends Coffee {
     private static final int COFFEE_HNUT_PHYAW_COFFEE_POWDER_AMOUNT = 3;
     private static final int COFFEE_HNUT_PHYAW_SUGAR_AMOUNT = 3;
 
-    private static final char HNUT_PHYAW_CHAR = 'H';
+    public static final char HNUT_PHYAW_CHAR = 'H';
 
     private int dairyCreamerAmount;
     private int coffeePowderAmount;
-    private int sugerAmount;
+    private int sugarAmount;
 
     public CoffeeHnutPhyaw(SellingType sellingType) {
         super(sellingType);
         dairyCreamerAmount = COFFEE_HNUT_PHYAW_DAIRY_CREAMER_AMOUNT;
         coffeePowderAmount = COFFEE_HNUT_PHYAW_COFFEE_POWDER_AMOUNT;
-        sugerAmount = COFFEE_HNUT_PHYAW_SUGAR_AMOUNT;
+        sugarAmount = COFFEE_HNUT_PHYAW_SUGAR_AMOUNT;
+    }
+
+    @Override
+    public boolean isSufficientInStockForNewSale(int quantity) {
+        return (TeaShopInventory.getObjInstance().getDairyCreamerInventory().getInStockQuantity() > getDairyCreamerAmount() * quantity
+                && TeaShopInventory.getObjInstance().getSugarInventory().getInStockQuantity() > getSugarAmount() * quantity
+                && TeaShopInventory.getObjInstance().getCoffeePowderInventory().getInStockQuantity() > getCoffeePowderAmount() * quantity);
     }
 
     public static void showBeverageWithChar() {
         System.out.println("\'" + HNUT_PHYAW_CHAR + "\' for Hnut Phyaw Coffee");
+    }
+
+    public int getDairyCreamerAmount() {
+        return dairyCreamerAmount;
+    }
+
+    public int getCoffeePowderAmount() {
+        return coffeePowderAmount;
+    }
+
+    public int getSugarAmount() {
+        return sugarAmount;
     }
 }

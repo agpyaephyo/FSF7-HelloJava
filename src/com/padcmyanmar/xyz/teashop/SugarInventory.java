@@ -18,4 +18,12 @@ public class SugarInventory extends Inventory {
     public void updateInventoryForNewSale(Tea tea, int sellingQuantity) {
         inStockQuantity -= tea.getSugarAmount() * sellingQuantity;
     }
+
+    public void updateInventoryForNewSale(CoffeeHnutPhyaw coffeeHnutPhyaw, int sellingQuantity) {
+        inStockQuantity -= coffeeHnutPhyaw.getSugarAmount() * sellingQuantity;
+    }
+
+    public void updateInventoryForNewSale(BlackCoffee blackCoffee, int sellingQuantity) {
+        inStockQuantity -= blackCoffee.getSugerAmount() * sellingQuantity;
+    }
 }
