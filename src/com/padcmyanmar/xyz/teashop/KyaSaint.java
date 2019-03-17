@@ -25,8 +25,8 @@ public class KyaSaint extends Tea {
                 + "\' for " + KYA_SAINT_NAME);
     }
 
-    public static void addTotalKyaSaintCups() {
-        totalKyaSaintCups++;
+    public static void addTotalKyaSaintCups(int quantity) {
+        totalKyaSaintCups += quantity;
     }
 
     public static void addSubTotal(double price) {
@@ -40,5 +40,17 @@ public class KyaSaint extends Tea {
 
     public static double getSubTotalForKyaSaintSales() {
         return subTotalForKyaSaintSales;
+    }
+
+    public static double getTotalDairyCreamerAmount() {
+        return KYA_SAINT_DIARY_CREAMER_AMOUNT * totalKyaSaintCups;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return KYA_SAINT_AKYAYAY_AMOUNT * totalKyaSaintCups;
+    }
+
+    public static double getTotalSugarAmount() {
+        return KYA_SAINT_SUGAR_AMOUNT * totalKyaSaintCups;
     }
 }

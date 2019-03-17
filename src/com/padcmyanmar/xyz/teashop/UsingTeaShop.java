@@ -170,19 +170,19 @@ public class UsingTeaShop {
                     ChoSaint.addTotalChoSaintCups(saleItem.getSaleQuantity());
                     ChoSaint.addSubTotal(price);
                 } else if (saleItem.getSaleTea() instanceof KyaSaint) {
-                    KyaSaint.addTotalKyaSaintCups();
+                    KyaSaint.addTotalKyaSaintCups(saleItem.getSaleQuantity());
                     KyaSaint.addSubTotal(price);
                 } else if (saleItem.getSaleTea() instanceof PopSaint) {
-                    PopSaint.addTotalPopSaintCups();
+                    PopSaint.addTotalPopSaintCups(saleItem.getSaleQuantity());
                     PopSaint.addSubTotal(price);
                 } else if (saleItem.getSaleTea() instanceof PopKya) {
-                    PopKya.addTotalPopKyaCups();
+                    PopKya.addTotalPopKyaCups(saleItem.getSaleQuantity());
                     PopKya.addSubTotal(price);
                 } else if (saleItem.getSaleTea() instanceof ChoKya) {
-                    ChoKya.addTotalChoKyaCup();
+                    ChoKya.addTotalChoKyaCup(saleItem.getSaleQuantity());
                     ChoKya.addSubTotal(price);
                 } else if (saleItem.getSaleTea() instanceof KyoutPaToung) {
-                    KyoutPaToung.addTotalKyoutPaToungCups();
+                    KyoutPaToung.addTotalKyoutPaToungCups(saleItem.getSaleQuantity());
                     KyoutPaToung.addSubTotal(price);
                 }
             }
@@ -204,6 +204,37 @@ public class UsingTeaShop {
                 + KyoutPaToung.getSubTotalForKyoutPaToungSale();
         System.out.println(">>>> Total Sale for Today : " + totalSale + " mmk");
 
+        double totalDairyCreamerUse = ChoSaint.getTotalDairyCreamerAmount()
+                + PopSaint.getTotalDairyCreamerAmount()
+                + PopKya.getTotalDairyCreamerAmount()
+                + KyaSaint.getTotalDairyCreamerAmount()
+                + ChoKya.getTotalDairyCreamerAmount()
+                + KyoutPaToung.getTotalDairyCreamerAmount();
 
+        double totalAKyaYayUse = ChoSaint.getTotalAKyaYayAmount()
+                + PopSaint.getTotalAKyaYayAmount()
+                + PopKya.getTotalAKyaYayAmount()
+                + KyaSaint.getTotalAKyaYayAmount()
+                + ChoKya.getTotalAKyaYayAmount()
+                + KyoutPaToung.getTotalAKyaYayAmount();
+
+        double totalSugarUse = ChoSaint.getTotalSugarAmount()
+                + PopSaint.getTotalSugarAmount()
+                + PopKya.getTotalSugarAmount()
+                + KyaSaint.getTotalSugarAmount()
+                + ChoKya.getTotalSugarAmount()
+                + KyoutPaToung.getTotalSugarAmount();
+
+        System.out.println();
+        System.out.println("=== Today Use of Inventory Summary ===");
+        dairyCreamerInventory.showUsedStock(totalDairyCreamerUse);
+        aKyaYayInventory.showUsedStock(totalAKyaYayUse);
+        sugarInventory.showUsedStock(totalSugarUse);
+
+        System.out.println();
+        System.out.println("=== Remaining Inventory for Today ===");
+        dairyCreamerInventory.showRemainingStock();
+        aKyaYayInventory.showRemainingStock();
+        sugarInventory.showRemainingStock();
     }
 }

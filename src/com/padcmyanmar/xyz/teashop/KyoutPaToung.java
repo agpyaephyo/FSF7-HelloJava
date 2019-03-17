@@ -25,8 +25,8 @@ public class KyoutPaToung extends Tea {
                 KYOUT_PA_TOUNG_NAME);
     }
 
-    public static void addTotalKyoutPaToungCups() {
-        totalKyoutPaToungCups++;
+    public static void addTotalKyoutPaToungCups(int quantity) {
+        totalKyoutPaToungCups += quantity;
     }
 
     public static void addSubTotal(double price) {
@@ -40,5 +40,17 @@ public class KyoutPaToung extends Tea {
 
     public static double getSubTotalForKyoutPaToungSale() {
         return subTotalForKyoutPaToungSale;
+    }
+
+    public static double getTotalDairyCreamerAmount() {
+        return KYOUT_PA_TOUNG_DIARY_CREAMER_AMOUNT * totalKyoutPaToungCups;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return KYOUT_PA_TOUNG_AKYAYAY_AMOUNT * totalKyoutPaToungCups;
+    }
+
+    public static double getTotalSugarAmount() {
+        return KYOUT_PA_TOUNG_SUGAR_AMOUNT * totalKyoutPaToungCups;
     }
 }

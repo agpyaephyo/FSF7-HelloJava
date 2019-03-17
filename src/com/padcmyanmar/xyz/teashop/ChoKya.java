@@ -25,8 +25,8 @@ public class ChoKya extends Tea {
                 + "\' for" + CHO_KYA_NAME);
     }
 
-    public static void addTotalChoKyaCup() {
-        totalChoKyaCup++;
+    public static void addTotalChoKyaCup(int quantity) {
+        totalChoKyaCup += quantity;
     }
 
     public static void addSubTotal(double price) {
@@ -40,5 +40,17 @@ public class ChoKya extends Tea {
 
     public static double getSubTotalForChoKyaSales() {
         return subTotalForChoKyaSales;
+    }
+
+    public static double getTotalDairyCreamerAmount() {
+        return CHO_KYA_DIARY_CREAMER_AMOUNT * totalChoKyaCup;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return CHO_KYA_AKYAYAY_AMOUNT * totalChoKyaCup;
+    }
+
+    public static double getTotalSugarAmount() {
+        return CHO_KYA_SUGAR_AMOUNT * totalChoKyaCup;
     }
 }

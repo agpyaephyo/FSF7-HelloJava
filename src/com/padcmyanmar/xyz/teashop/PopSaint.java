@@ -24,8 +24,8 @@ public class PopSaint extends Tea {
         System.out.println("\'" + POP_SAINT_CHAR + "\' for " + POP_SAINT_NAME);
     }
 
-    public static void addTotalPopSaintCups() {
-        totalPopSaintCups++;
+    public static void addTotalPopSaintCups(int quantity) {
+        totalPopSaintCups += quantity;
     }
 
     public static void addSubTotal(double price) {
@@ -39,5 +39,17 @@ public class PopSaint extends Tea {
 
     public static double getSubTotalForPopSaintSales() {
         return subTotalForPopSaintSales;
+    }
+
+    public static double getTotalDairyCreamerAmount() {
+        return POP_SAINT_DIARY_CREAMER_AMOUNT * totalPopSaintCups;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return POP_SAINT_AKYAYAY_AMOUNT * totalPopSaintCups;
+    }
+
+    public static double getTotalSugarAmount() {
+        return POP_SAINT_SUGAR_AMOUNT * totalPopSaintCups;
     }
 }

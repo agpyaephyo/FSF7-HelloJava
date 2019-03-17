@@ -47,4 +47,16 @@ public class ChoSaint extends Tea {
     public static double getSubTotalForChoSaintSales() {
         return subTotalForChoSaintSales;
     }
+
+    public static double getTotalDairyCreamerAmount() {
+        return CHO_SAINT_DIARY_CREAMER_AMOUNT * totalChoSaintCups;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return CHO_SAINT_AKYAYAY_AMOUNT * totalChoSaintCups;
+    }
+
+    public static double getTotalSugarAmount() {
+        return CHO_SAINT_SUGAR_AMOUNT * totalChoSaintCups;
+    }
 }

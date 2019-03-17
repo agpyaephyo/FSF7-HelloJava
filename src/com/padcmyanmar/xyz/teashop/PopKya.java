@@ -24,8 +24,8 @@ public class PopKya extends Tea {
         System.out.println("\'" + POP_KYA_CHAR + "\' for " + POP_KYA_NAME);
     }
 
-    public static void addTotalPopKyaCups() {
-        totalPopKyaCups++;
+    public static void addTotalPopKyaCups(int quantity) {
+        totalPopKyaCups += quantity;
     }
 
     public static void addSubTotal(double price) {
@@ -39,5 +39,17 @@ public class PopKya extends Tea {
 
     public static int getSubTotalForPopKyaSales() {
         return subTotalForPopKyaSales;
+    }
+
+    public static double getTotalDairyCreamerAmount() {
+        return POP_KYA_DIARY_CREAMER_AMOUNT * totalPopKyaCups;
+    }
+
+    public static double getTotalAKyaYayAmount() {
+        return POP_KYA_AKYAYAY_AMOUNT * totalPopKyaCups;
+    }
+
+    public static double getTotalSugarAmount() {
+        return POP_KYA_SUGAR_AMOUNT * totalPopKyaCups;
     }
 }
